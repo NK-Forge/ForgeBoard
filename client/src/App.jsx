@@ -2,6 +2,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import CreateProject from './pages/CreateProject.jsx';
 import EditProject from './pages/EditProject.jsx';
+import ProjectDetail from './pages/ProjectDetail.jsx';
 import ProjectList from './pages/ProjectList.jsx';
 
 function HomePage() {
@@ -21,18 +22,6 @@ function HomePage() {
   );
 }
 
-function PlaceholderPage({ title, message }) {
-  return (
-    <main className="page">
-      <section className="hero">
-        <p className="eyebrow">Coming Next</p>
-        <h1>{title}</h1>
-        <p>{message}</p>
-      </section>
-    </main>
-  );
-}
-
 function App() {
   return (
     <>
@@ -42,15 +31,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectList />} />
         <Route path="/projects/new" element={<CreateProject />} />
-        <Route
-          path="/projects/:projectId"
-          element={
-            <PlaceholderPage
-              title="Project Detail"
-              message="The task board will be built after project creation and editing."
-            />
-          }
-        />
+        <Route path="/projects/:projectId" element={<ProjectDetail />} />
         <Route path="/projects/:projectId/edit" element={<EditProject />} />
       </Routes>
     </>
