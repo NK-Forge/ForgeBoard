@@ -1,5 +1,7 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
+import CreateProject from './pages/CreateProject.jsx';
+import EditProject from './pages/EditProject.jsx';
 import ProjectList from './pages/ProjectList.jsx';
 
 function HomePage() {
@@ -39,15 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectList />} />
-        <Route
-          path="/projects/new"
-          element={
-            <PlaceholderPage
-              title="Create Project"
-              message="The project form will be built next."
-            />
-          }
-        />
+        <Route path="/projects/new" element={<CreateProject />} />
         <Route
           path="/projects/:projectId"
           element={
@@ -57,15 +51,7 @@ function App() {
             />
           }
         />
-        <Route
-          path="/projects/:projectId/edit"
-          element={
-            <PlaceholderPage
-              title="Edit Project"
-              message="The edit project form will be built soon."
-            />
-          }
-        />
+        <Route path="/projects/:projectId/edit" element={<EditProject />} />
       </Routes>
     </>
   );
