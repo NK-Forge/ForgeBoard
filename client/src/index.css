@@ -194,4 +194,51 @@ button {
   .page-heading h1 {
     font-size: 2.5rem;
   }
+
+  .form-card {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 720px;
+    padding: 2rem;
+    border: 1px solid #dbe3ea;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(23, 32, 38, 0.08);
+  }
+
+  .form-card label {
+    display: grid;
+    gap: 0.5rem;
+    color: #172026;
+    font-weight: 700;
+  }
+
+  .form-card input,
+  .form-card textarea,
+  .form-card select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    color: #172026;
+    background: #ffffff;
+  }
+
+  .form-card input:focus,
+  .form-card textarea:focus,
+  .form-card select:focus {
+    outline: 3px solid rgba(15, 118, 110, 0.2);
+    border-color: #0f766e;
+  }
+
+  .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
 }
