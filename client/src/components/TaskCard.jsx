@@ -18,7 +18,7 @@ const formatDueDate = (dueDate) => {
   return String(dueDate).split('T')[0];
 };
 
-function TaskCard({ task, onStatusChange, onDelete }) {
+function TaskCard({ task, onStatusChange, onEdit, onDelete }) {
   return (
     <article className="task-card">
       <div>
@@ -48,6 +48,14 @@ function TaskCard({ task, onStatusChange, onDelete }) {
       </label>
 
       <div className="card-actions">
+        <button
+          className="button secondary"
+          type="button"
+          onClick={() => onEdit(task)}
+        >
+          Edit
+        </button>
+
         <button
           className="button danger"
           type="button"

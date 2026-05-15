@@ -1,6 +1,6 @@
 import TaskCard from './TaskCard.jsx';
 
-function TaskColumn({ title, tasks, onStatusChange, onDelete }) {
+function TaskColumn({ title, tasks, onStatusChange, onEdit, onDelete }) {
   return (
     <section className="task-column">
       <div className="task-column-header">
@@ -17,6 +17,7 @@ function TaskColumn({ title, tasks, onStatusChange, onDelete }) {
               key={task.id}
               task={task}
               onStatusChange={onStatusChange}
+              onEdit={onEdit}
               onDelete={onDelete}
             />
           ))}
