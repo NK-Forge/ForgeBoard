@@ -1,13 +1,16 @@
 {
   "name": "forgeboard",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "ForgeBoard PERN project tracker.",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "scripts": {
+    "build": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
+    "start": "npm start --prefix server",
+    "test": "npm run test:run --prefix server && npm run test:run --prefix client"
+  },
+  "engines":{
+    "node": "22.x"
   },
   "dependencies": {
     "react": "^19.2.6",
