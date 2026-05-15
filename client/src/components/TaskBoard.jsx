@@ -1,6 +1,6 @@
 import TaskColumn from './TaskColumn.jsx';
 
-function TaskBoard({ tasks, onStatusChange, onDelete }) {
+function TaskBoard({ tasks, onStatusChange, onEdit, onDelete }) {
   const todoTasks = tasks.filter((task) => task.status === 'todo');
   const inProgressTasks = tasks.filter((task) => task.status === 'in_progress');
   const doneTasks = tasks.filter((task) => task.status === 'done');
@@ -11,6 +11,7 @@ function TaskBoard({ tasks, onStatusChange, onDelete }) {
         title="To Do"
         tasks={todoTasks}
         onStatusChange={onStatusChange}
+        onEdit={onEdit}
         onDelete={onDelete}
       />
 
@@ -18,6 +19,7 @@ function TaskBoard({ tasks, onStatusChange, onDelete }) {
         title="In Progress"
         tasks={inProgressTasks}
         onStatusChange={onStatusChange}
+        onEdit={onEdit}
         onDelete={onDelete}
       />
 
@@ -25,6 +27,7 @@ function TaskBoard({ tasks, onStatusChange, onDelete }) {
         title="Done"
         tasks={doneTasks}
         onStatusChange={onStatusChange}
+        onEdit={onEdit}
         onDelete={onDelete}
       />
     </section>

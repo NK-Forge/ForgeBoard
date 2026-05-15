@@ -4,7 +4,9 @@ import ErrorMessage from '../components/ErrorMessage.jsx';
 import LoadingMessage from '../components/LoadingMessage.jsx';
 import TaskBoard from '../components/TaskBoard.jsx';
 import TaskFilters from '../components/TaskFilters.jsx';
+import TaskForm from '../components/TaskForm.jsx';
 import {
+  createTask,
   deleteTask,
   getProjectById,
   getTasksByProjectId,
@@ -18,6 +20,8 @@ function ProjectDetail() {
   const [tasks, setTasks] = useState([]);
   const [statusFilter, setStatusFilter] = useState('all');
   const [priorityFilter, setPriorityFilter] = useState('all');
+  const [showTaskForm, setShowTaskForm] = useState(false);
+  const [editingTask, setEditingTask] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -57,6 +61,42 @@ function ProjectDetail() {
     setPriorityFilter('all');
   };
 
+  const handleShowCreateTaskForm = () => {
+    setEditingTask(null);
+    setShowTaskForm(true);
+  };
+
+  const handleEditTask = (task) => {
+    setEditingTask(task);
+    setShowTaskForm(true);
+  };
+
+  const handleCancelTaskForm = () => {
+    setEditingTask(null);
+    setShowTaskForm(false);
+  };
+
+  const handleSubmitTask = async (taskData) => {
+    setError('');
+
+    if (editingTask) {
+      const updatedTask = await updateTask(editingTask.id, taskData);
+
+      setTasks((currentTasks) =>
+        currentTasks.map((task) =>
+          task.id === editingTask.id ? updatedTask : task
+        )
+      );
+    } else {
+      const createdTask = await createTask(projectId, taskData);
+
+      setTasks((currentTasks) => [createdTask, ...currentTasks]);
+    }
+
+    setEditingTask(null);
+    setShowTaskForm(false);
+  };
+
   const handleStatusChange = async (taskId, status) => {
     try {
       setError('');
@@ -88,6 +128,11 @@ function ProjectDetail() {
       setTasks((currentTasks) =>
         currentTasks.filter((task) => task.id !== taskId)
       );
+
+      if (editingTask?.id === taskId) {
+        setEditingTask(null);
+        setShowTaskForm(false);
+      }
     } catch (err) {
       setError(err.message);
     }
@@ -126,13 +171,32 @@ function ProjectDetail() {
             Back to Projects
           </Link>
 
-          <Link className="button" to={`/projects/${project.id}/edit`}>
+          <Link className="button secondary" to={`/projects/${project.id}/edit`}>
             Edit Project
           </Link>
+
+          <button
+            className="button"
+            type="button"
+            onClick={handleShowCreateTaskForm}
+          >
+            Add Task
+          </button>
         </div>
       </section>
 
       <ErrorMessage message={error} />
+
+      {showTaskForm && (
+        <section className="task-form-panel">
+          <TaskForm
+            initialTask={editingTask}
+            onSubmit={handleSubmitTask}
+            onCancel={handleCancelTaskForm}
+            submitButtonText={editingTask ? 'Update Task' : 'Create Task'}
+          />
+        </section>
+      )}
 
       <TaskFilters
         statusFilter={statusFilter}
@@ -153,6 +217,7 @@ function ProjectDetail() {
         <TaskBoard
           tasks={filteredTasks}
           onStatusChange={handleStatusChange}
+          onEdit={handleEditTask}
           onDelete={handleDeleteTask}
         />
       )}

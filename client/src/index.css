@@ -217,6 +217,25 @@ button {
   gap: 0.75rem;
 }
 
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.task-form {
+  max-width: 840px;
+  margin-bottom: 2rem;
+}
+
+.task-form h2 {
+  margin: 0;
+}
+
+.task-form-panel {
+  margin-bottom: 2rem;
+}
+
 .heading-actions {
   display: flex;
   flex-wrap: wrap;
@@ -393,5 +412,9 @@ button {
   .hero h1,
   .page-heading h1 {
     font-size: 2.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
   }
 }
