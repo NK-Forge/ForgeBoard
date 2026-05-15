@@ -45,7 +45,7 @@ function TaskForm({
   };
 
   return (
-    <form className="form-card task-form" onSubmit={handleSubmit}>
+    <form className="form-card task-form" onSubmit={handleSubmit} noValidate>
       <div>
         <p className="eyebrow">
           {initialTask ? 'Edit Task' : 'New Task'}
