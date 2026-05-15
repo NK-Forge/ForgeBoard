@@ -14,6 +14,17 @@ a {
   text-decoration: none;
 }
 
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -44,7 +55,8 @@ a {
   padding: 3rem 0;
 }
 
-.hero {
+.hero,
+.empty-state {
   max-width: 720px;
   padding: 2rem;
   border-radius: 16px;
@@ -60,12 +72,15 @@ a {
   letter-spacing: 0.08em;
 }
 
-.hero h1 {
+.hero h1,
+.page-heading h1 {
   margin: 0 0 1rem;
   font-size: clamp(2.5rem, 8vw, 5rem);
 }
 
-.hero p {
+.hero p,
+.page-heading p,
+.empty-state p {
   max-width: 580px;
   margin-bottom: 1.5rem;
   font-size: 1.125rem;
@@ -73,26 +88,110 @@ a {
 }
 
 .button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
   padding: 0.75rem 1rem;
+  border: 0;
   border-radius: 10px;
   color: #ffffff;
   background: #0f766e;
   font-weight: 700;
 }
 
+.button.secondary {
+  color: #172026;
+  background: #dbeafe;
+}
+
+.button.danger {
+  color: #ffffff;
+  background: #b91c1c;
+}
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 260px;
+  padding: 1.5rem;
+  border: 1px solid #dbe3ea;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(23, 32, 38, 0.06);
+}
+
+.project-card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.4rem;
+}
+
+.project-card p {
+  line-height: 1.5;
+}
+
+.project-progress {
+  margin: 1rem 0;
+  color: #0f766e;
+  font-weight: 700;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.message,
+.error-message {
+  padding: 1rem;
+  border-radius: 10px;
+  background: #ffffff;
+  font-weight: 700;
+}
+
+.error-message {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
 @media (max-width: 640px) {
-  .site-header {
+  .site-header,
+  .page-heading {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .site-header {
     padding: 1rem;
   }
 
-  .site-header nav {
+  .site-header nav,
+  .card-actions {
     flex-wrap: wrap;
   }
 
   .page {
     padding: 2rem 0;
+  }
+
+  .hero h1,
+  .page-heading h1 {
+    font-size: 2.5rem;
   }
 }
