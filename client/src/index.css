@@ -110,6 +110,11 @@ button {
   background: #b91c1c;
 }
 
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
 .page-heading {
   display: flex;
   justify-content: space-between;
@@ -170,6 +175,201 @@ button {
   background: #fee2e2;
 }
 
+.form-card {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 720px;
+  padding: 2rem;
+  border: 1px solid #dbe3ea;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(23, 32, 38, 0.08);
+}
+
+.form-card label {
+  display: grid;
+  gap: 0.5rem;
+  color: #172026;
+  font-weight: 700;
+}
+
+.form-card input,
+.form-card textarea,
+.form-card select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  color: #172026;
+  background: #ffffff;
+}
+
+.form-card input:focus,
+.form-card textarea:focus,
+.form-card select:focus {
+  outline: 3px solid rgba(15, 118, 110, 0.2);
+  border-color: #0f766e;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.heading-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #dbe3ea;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(23, 32, 38, 0.05);
+}
+
+.filter-bar label {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 180px;
+  font-weight: 700;
+}
+
+.filter-bar select,
+.status-control select {
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.task-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.task-column {
+  min-height: 320px;
+  padding: 1rem;
+  border: 1px solid #dbe3ea;
+  border-radius: 16px;
+  background: #eaf0f4;
+}
+
+.task-column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.task-column-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.task-column-header span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  min-height: 2rem;
+  border-radius: 999px;
+  color: #ffffff;
+  background: #172026;
+  font-weight: 700;
+}
+
+.task-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.task-card {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #dbe3ea;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(23, 32, 38, 0.06);
+}
+
+.task-card h3 {
+  margin: 0 0 0.5rem;
+}
+
+.task-card p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.priority-low {
+  color: #14532d;
+  background: #dcfce7;
+}
+
+.priority-medium {
+  color: #713f12;
+  background: #fef3c7;
+}
+
+.priority-high {
+  color: #7f1d1d;
+  background: #fee2e2;
+}
+
+.due-date {
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.status-control {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 700;
+}
+
+.empty-column {
+  margin: 0;
+  color: #64748b;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .task-board {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 640px) {
   .site-header,
   .page-heading {
@@ -193,52 +393,5 @@ button {
   .hero h1,
   .page-heading h1 {
     font-size: 2.5rem;
-  }
-
-  .form-card {
-    display: grid;
-    gap: 1.25rem;
-    max-width: 720px;
-    padding: 2rem;
-    border: 1px solid #dbe3ea;
-    border-radius: 16px;
-    background: #ffffff;
-    box-shadow: 0 10px 30px rgba(23, 32, 38, 0.08);
-  }
-
-  .form-card label {
-    display: grid;
-    gap: 0.5rem;
-    color: #172026;
-    font-weight: 700;
-  }
-
-  .form-card input,
-  .form-card textarea,
-  .form-card select {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 10px;
-    color: #172026;
-    background: #ffffff;
-  }
-
-  .form-card input:focus,
-  .form-card textarea:focus,
-  .form-card select:focus {
-    outline: 3px solid rgba(15, 118, 110, 0.2);
-    border-color: #0f766e;
-  }
-
-  .form-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .button:disabled {
-    cursor: not-allowed;
-    opacity: 0.65;
   }
 }
