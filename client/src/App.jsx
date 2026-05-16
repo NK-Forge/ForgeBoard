@@ -1,4 +1,9 @@
 import { Link, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar.jsx';
+import CreateProject from './pages/CreateProject.jsx';
+import EditProject from './pages/EditProject.jsx';
+import ProjectDetail from './pages/ProjectDetail.jsx';
+import ProjectList from './pages/ProjectList.jsx';
 
 function HomePage() {
   return (
@@ -17,32 +22,17 @@ function HomePage() {
   );
 }
 
-function ProjectsPlaceholder() {
-  return (
-    <main className="page">
-      <h1>Projects</h1>
-      <p>The project dashboard will be built here next.</p>
-    </main>
-  );
-}
-
 function App() {
   return (
     <>
-      <header className="site-header">
-        <Link className="logo" to="/">
-          ForgeBoard
-        </Link>
-        <nav>
-          <Link to="/projects">Projects</Link>
-          <Link to="/projects/new">New Project</Link>
-        </nav>
-      </header>
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/projects" element={<ProjectsPlaceholder />} />
-        <Route path="/projects/new" element={<ProjectsPlaceholder />} />
+        <Route path="/projects" element={<ProjectList />} />
+        <Route path="/projects/new" element={<CreateProject />} />
+        <Route path="/projects/:projectId" element={<ProjectDetail />} />
+        <Route path="/projects/:projectId/edit" element={<EditProject />} />
       </Routes>
     </>
   );

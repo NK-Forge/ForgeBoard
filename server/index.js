@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -12,9 +13,15 @@ const errorHandler = require('./middleware/errorHandler');
 const app = express();
 
 const PORT = process.env.PORT || 4001;
+const clientDistPath = path.join(__dirname, '..', 'client', 'dist');
+
+const corsOptions =
+  process.env.NODE_ENV === 'production'
+    ? { origin: process.env.CORS_ORIGIN || false }
+    : {};
 
 app.use(helmet());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '10kb' }));
 
 if (process.env.NODE_ENV !== 'test') {
@@ -37,6 +44,22 @@ app.get('/api/health', async (req, res, next) => {
 
 app.use('/api/projects', projectRoutes);
 app.use('/api', taskRoutes);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(clientDistPath));
+
+  app.use((req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+
+    if (req.method !== 'GET') {
+      return next();
+    }
+
+    return res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+}
 
 app.use((req, res) => {
   res.status(404).json({
