@@ -5,7 +5,7 @@
   "description": "ForgeBoard PERN project tracker.",
   "type": "module",
     "scripts": {
-    "build": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
+    "build": "npm install --prefix server && npm install --include=dev --prefix client && npm run build --prefix client",
     "start": "npm start --prefix server",
     "test": "npm run test:run --prefix server && npm run test:run --prefix client"
   },
