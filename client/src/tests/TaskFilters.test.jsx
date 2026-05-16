@@ -1,3 +1,4 @@
+import React from 'react';
 import '@testing-library/jest-dom/vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import TaskFilters from '../components/TaskFilters.jsx';
