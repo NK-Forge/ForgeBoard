@@ -4,7 +4,7 @@ ForgeBoard is a final PERN stack project tracker built with React, Node.js, Expr
 
 ## Project Objective
 
-Live @ https://fullstack-ecommerce-app-qhpb.onrender.com
+Live @ [https://forgeboard.onrender.com]
 
 This project brings together the core full-stack skills covered in the course:
 
