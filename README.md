@@ -1,76 +1,94 @@
 # ForgeBoard
 
-ForgeBoard is a final PERN stack project tracker built with React, Node.js, Express, PostgreSQL, and Neon. The app lets users create projects, manage tasks, organize work by status and priority, and track progress through a simple task-board interface.
+ForgeBoard is a full-stack project and task management application built with React, Node.js, Express, PostgreSQL, and Neon.
 
-## Project Objective
+The app helps users create projects, manage tasks, organize work by status and priority, and track progress through a simple task-board interface.
 
-Live @ [https://forgeboard.onrender.com]
+---
 
-This project brings together the core full-stack skills covered in the course:
+## Live Demo
 
-- Create a front-end using React.js
-- Create a server using Node.js and Express.js
-- Use a PostgreSQL database to store application data
-- Set up basic application security
-- Create tests to verify code behavior
-- Prepare the application for deployment on Render
+[ForgeBoard Live Demo](https://forgeboard.onrender.com/)
+
+---
+
+## Purpose
+
+ForgeBoard was built to demonstrate clean full-stack fundamentals across a practical project-management workflow:
+
+* React frontend application structure
+* Node.js and Express API design
+* PostgreSQL data modeling
+* Project and task CRUD workflows
+* Basic security middleware
+* Frontend and backend tests
+* Deployment-ready configuration
+
+This project focuses on clarity, maintainability, and end-to-end application behavior rather than visual complexity.
+
+---
 
 ## Features
 
 ### Projects
 
-- View all projects from the dashboard
-- Create a new project
-- Edit an existing project
-- Delete a project
-- View project progress based on completed tasks
+* View all projects from the dashboard
+* Create new projects
+* Edit existing projects
+* Delete projects
+* Track project progress based on task completion
 
 ### Tasks
 
-- View tasks for a single project
-- Create a new task
-- Edit an existing task
-- Delete a task
-- Update task status from a dropdown
-- Filter tasks by status
-- Filter tasks by priority
-- Organize tasks into board columns:
-  - To Do
-  - In Progress
-  - Done
+* View tasks for a selected project
+* Create new tasks
+* Edit existing tasks
+* Delete tasks
+* Update task status
+* Filter tasks by status
+* Filter tasks by priority
+* Organize tasks into board columns:
+
+  * To Do
+  * In Progress
+  * Done
+
+---
 
 ## Tech Stack
 
-### Front-End
+### Frontend
 
-- React
-- React Router
-- Vite
-- CSS
-- Vitest
-- React Testing Library
+* React
+* React Router
+* Vite
+* CSS
+* Vitest
+* React Testing Library
 
-### Back-End
+### Backend
 
-- Node.js
-- Express.js
-- PostgreSQL
-- pg
-- dotenv
-- cors
-- helmet
-- morgan
-- Vitest
-- Supertest
+* Node.js
+* Express.js
+* PostgreSQL
+* pg
+* dotenv
+* cors
+* helmet
+* morgan
+* Vitest
+* Supertest
 
 ### Database and Deployment
 
-- Neon PostgreSQL
-- Render
+* Neon PostgreSQL
+* Render-ready production configuration
+
+---
 
 ## Project Structure
 
-```text
+```txt
 ForgeBoard/
   client/
     src/
@@ -83,6 +101,7 @@ ForgeBoard/
       index.css
     index.html
     package.json
+
   server/
     db/
       index.js
@@ -99,9 +118,12 @@ ForgeBoard/
       tasks.test.js
     index.js
     package.json
+
   package.json
   README.md
 ```
+
+---
 
 ## Database Schema
 
@@ -133,17 +155,19 @@ CREATE TABLE tasks (
 );
 ```
 
+---
+
 ## API Routes
 
 ### Health Check
 
-```text
+```txt
 GET /api/health
 ```
 
 ### Projects
 
-```text
+```txt
 GET    /api/projects
 POST   /api/projects
 GET    /api/projects/:id
@@ -153,25 +177,31 @@ DELETE /api/projects/:id
 
 ### Tasks
 
-```text
+```txt
 GET    /api/projects/:projectId/tasks
 POST   /api/projects/:projectId/tasks
 PUT    /api/tasks/:id
 DELETE /api/tasks/:id
 ```
 
-## Security Features
+---
 
-ForgeBoard includes basic security measures appropriate for a course-level PERN application:
+## Security and Reliability Notes
 
-- `helmet` for common HTTP security headers
-- `cors` with environment-aware configuration
-- `express.json({ limit: '10kb' })` to limit request body size
-- Environment variables for database connection strings
-- Parameterized SQL queries to reduce SQL injection risk
-- ID validation middleware
-- Input validation for project and task data
-- Centralized error handling middleware
+ForgeBoard includes basic application security and validation practices:
+
+* `helmet` for common HTTP security headers
+* `cors` with environment-aware configuration
+* `express.json({ limit: '10kb' })` to limit request body size
+* Environment variables for database connection strings
+* Parameterized SQL queries to reduce SQL injection risk
+* ID validation middleware
+* Input validation for project and task data
+* Centralized error handling middleware
+* Backend route tests with Supertest
+* Frontend component tests with React Testing Library
+
+---
 
 ## Environment Variables
 
@@ -187,7 +217,7 @@ CORS_ORIGIN=
 NODE_ENV=development
 ```
 
-For production on Render, set:
+For production deployment:
 
 ```env
 DATABASE_URL=your_neon_pooled_connection_string
@@ -204,7 +234,9 @@ Create `client/.env` using `client/.env.example` as a guide.
 VITE_API_URL=http://localhost:4001/api
 ```
 
-For Render production deployment, `VITE_API_URL` can be left unset because the client uses same-origin `/api` in production.
+For same-origin production deployment, `VITE_API_URL` can be left unset.
+
+---
 
 ## Local Setup
 
@@ -215,9 +247,9 @@ git clone https://github.com/NK-Forge/ForgeBoard.git
 cd ForgeBoard
 ```
 
-### 2. Install dependencies
+### 2. Install dependencies and build
 
-From the repo root:
+From the repository root:
 
 ```bash
 npm run build
@@ -225,7 +257,7 @@ npm run build
 
 This installs server dependencies, installs client dependencies, and builds the React client.
 
-For active local development, you can also install dependencies separately:
+For active local development, dependencies can also be installed separately:
 
 ```bash
 cd server
@@ -239,12 +271,12 @@ npm install
 
 Use the Neon SQL Editor or a PostgreSQL client to run:
 
-```text
+```txt
 server/db/schema.sql
 server/db/seed.sql
 ```
 
-### 4. Start the back-end server
+### 4. Start the backend server
 
 ```bash
 cd server
@@ -253,17 +285,17 @@ npm run dev
 
 The API runs at:
 
-```text
+```txt
 http://localhost:4001/api
 ```
 
 Health check:
 
-```text
+```txt
 http://localhost:4001/api/health
 ```
 
-### 5. Start the front-end dev server
+### 5. Start the frontend dev server
 
 In another terminal:
 
@@ -274,9 +306,11 @@ npm run dev
 
 The React app runs at:
 
-```text
+```txt
 http://localhost:5173
 ```
+
+---
 
 ## Testing
 
@@ -286,29 +320,33 @@ http://localhost:5173
 npm test
 ```
 
-### Run back-end tests only
+### Run backend tests only
 
 ```bash
 cd server
 npm run test:run
 ```
 
-### Run front-end tests only
+### Run frontend tests only
 
 ```bash
 cd client
 npm run test:run
 ```
 
+---
+
 ## Build
 
-Build the full app from the repo root:
+Build the full app from the repository root:
 
 ```bash
 npm run build
 ```
 
 This installs dependencies and builds the React client into `client/dist`.
+
+---
 
 ## Production Start
 
@@ -321,15 +359,15 @@ NODE_ENV=production npm start
 
 The Express server serves both the API and the built React app.
 
+---
+
 ## Render Deployment Notes
 
 ForgeBoard is prepared for a single-service Render deployment.
 
 ### Render Web Service Settings
 
-Use these settings in Render:
-
-```text
+```txt
 Build Command: npm run build
 Start Command: npm start
 ```
@@ -347,30 +385,37 @@ Optional:
 CORS_ORIGIN=
 ```
 
-Leave `VITE_API_URL` unset for the production build unless deploying the client and API separately.
+Leave `VITE_API_URL` unset for same-origin production deployment unless deploying the client and API separately.
+
+---
+
+## Current Status
+
+Implemented:
+
+* React frontend
+* Node.js and Express backend
+* PostgreSQL database schema
+* Neon database support
+* CRUD workflows for projects and tasks
+* Basic security middleware
+* Input and ID validation
+* Backend route tests
+* Frontend component tests
+* Render-ready deployment configuration
+
+---
 
 ## Future Improvements
 
 Possible future enhancements include:
 
-- User authentication
-- Drag-and-drop task movement between columns
-- Search projects and tasks
-- Project archiving
-- Due date reminders
-- Project completion percentage display
-- More detailed dashboard analytics
-- More advanced validation and database constraints
-
-## Final Project Status
-
-ForgeBoard meets the final PERN project requirements:
-
-- React front-end complete
-- Node and Express server complete
-- PostgreSQL database connected through Neon
-- CRUD functionality implemented for projects and tasks
-- Basic security middleware and validation included
-- Back-end route tests included
-- Front-end component tests included
-- Prepared for Render deployment
+* User authentication
+* Drag-and-drop task movement between columns
+* Search for projects and tasks
+* Project archiving
+* Due date reminders
+* Project completion percentage display
+* More detailed dashboard analytics
+* Stronger validation and database constraints
+* CI workflow for automated test/build verification
